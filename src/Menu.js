@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import ListMenu from './Atom/ListMenu'
 
 const styles = theme => ({
   root: {
@@ -79,10 +75,7 @@ function SearchAppBar(props) {
       <AppBar position="fixed" style={{backgroundColor:'#ffa733',marginBottom:'20px'}}>
         <Toolbar>
             <img style={{width:'75px',height:'75px',marginRight:'100px'}}src = 'https://res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1482132470/vfmmn0twb17nn2epblee.png'/>
-            <Tabs>
-                <Tab label="Create Meet Up" style={{color:'white'}} />
-                <Tab label="Explore" />
-            </Tabs>
+            <ListMenu/>
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
