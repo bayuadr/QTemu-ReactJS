@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
-import Menu from './Menu.js';
-import Footer from'./Footer.js';
-import Container from './Container.js'
+import Home from './Route/Home';
+import CreateMeetUp from "./Route/CreateMeetUp";
+import Explore from "./Route/Explore";
+import View from "./Route/View";
+import NotFound from "./Route/NotFound";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import store from './Redux/index'
+import {Provider} from 'react-redux'
 
 class App extends Component {
+ 
   render() {
     
     return (
-      <div style={{flexGrow:'1',margin:0}}>
-        <Menu/>
-        <Container/>
-        <Footer/>
-      </div>
+      <Provider store={store}>
+      <BrowserRouter>
+         <Switch> 
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/CreateMeetUp" component={CreateMeetUp}/>
+            <Route exact path ="/View/:index" component={View}/>
+            <Route exact path="/Explore" component={Explore}/>
+            
+            <Route exact path="/NotFound" component ={NotFound}/>
+           
+          </Switch>   
+      </BrowserRouter>
+      </Provider>
+      
     );
   }
 }

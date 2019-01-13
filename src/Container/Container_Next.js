@@ -2,8 +2,11 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import React, { Component } from 'react';
 import Title from '../Atom/Title'
-import Data from '../Atom/Data'
 import Typography from '@material-ui/core/Typography'
+import { connect } from 'react-redux'
+import {fetchUser} from '../Redux/action'
+import {bindActionCreators} from 'redux'
+import ContentLoader, { Facebook } from 'react-content-loader'
 
 class Container_Next extends Component{
     constructor(props){
@@ -11,13 +14,46 @@ class Container_Next extends Component{
 
         this.state ={
             valueTitle : 'Next Meetup',
-            valueContainer : '',   
         }
     }
 
+    componentDidMount() {
+        this.props.fetchUser()
+
+    }
 
     render() {
-        const { valueTitle,valueContainer } = this.state
+        let i = 0
+
+        const { valueTitle } = this.state
+        const { Members,loading } = this.props
+
+        if (loading){
+            return(
+                <Grid container style={{marginBottom:'20px'}}>
+            <Grid item xs={2}>
+            </Grid>
+            
+            <Grid item xs={8}>
+                <Grid item xs={12}>
+                    <Title value={valueTitle}/>
+                    <Paper style={{padding:'10px 10px 10px 10px'}}>
+                    <ContentLoader>
+                    <rect x="0" y="10" rx="4" ry="4" width="300" height="13" />
+                    <rect x="10" y="40" rx="3" ry="3" width="250" height="10" />
+                    <rect x="10" y="70" rx="4" ry="4" width="300" height="13" />
+                    <rect x="0" y="100" rx="3" ry="3" width="250" height="10" />
+                     </ContentLoader>   
+                    </Paper>
+                </Grid>          
+            </Grid>
+            
+            <Grid item xs={2}>
+            </Grid>
+        </Grid>
+            )
+        }
+
         return (
         <Grid container style={{marginBottom:'20px'}}>
             <Grid item xs={2}>
@@ -41,7 +77,18 @@ class Container_Next extends Component{
                         --------------------------------------------------------------------------------------------------------------------------
                         <br/>
                         See you there!<br/>
-                        <Data DataAPI={'Full'}/>
+                        {
+                        
+                            Members.map(names => {
+                                if (names.name !== 'Obi-Wan Kenobi')
+                                {
+                                    return names.name + ', '
+                                }
+                                else{
+                                    return names.name
+                                    }
+                            
+                        })}
                         <br/>
            
                         </Typography>
@@ -56,4 +103,13 @@ class Container_Next extends Component{
     }
 }
 
-export default Container_Next
+const mapStateToProps = (state) => ({
+    Members : state.data,
+    loading : state.loading
+})
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+fetchUser
+},dispatch)
+
+export default connect (mapStateToProps, mapDispatchToProps) (Container_Next);

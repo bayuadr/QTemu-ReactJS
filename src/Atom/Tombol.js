@@ -1,14 +1,75 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import {Link} from 'react-router-dom';
 
-const Tombol = (props) => {
-    return (
-    <div>
-        <Button style={{backgroundColor:"#ffa733",color:'white'}} variant="contained">
-            {props.value}
-        </Button>
-    </div>
-    )
+class Tombol extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            open: false,
+          };
+        
+    }
+    handleClickOpen = () => {
+        this.setState({ open: true });
+      };
+  
+      handleClose = () => {
+        this.setState({ open: false });
+      };
+      render(){
+          const {value,valueIndex} = this.props
+        if (value==='Submit'){
+        
+            return (
+                <div>
+            <Button style={{backgroundColor:"#ffa733",color:'white'}} variant="contained" onClick={this.handleClickOpen}>
+                {value}
+            </Button>
+            <Dialog
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            >
+            <DialogTitle id="alert-dialog-title">{"Information !"}</DialogTitle>
+            <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                Success Creating New Meet UP, See you there !
+                </DialogContentText>
+            </DialogContent>
+           
+            </Dialog>
+            </div>
+            )
+        }
+       else if(value ==='View'){
+        return (
+            <div>
+             <Link to={`/View/${valueIndex}`} style={{color:'white',textDecoration:'none'}}>
+                <Button style={{backgroundColor:"#ffa733",color:'white'}} variant="contained">
+                    {value}
+                </Button>
+             </Link>
+            </div>
+            )
+       }
+       return (
+        <div>
+            <Button style={{backgroundColor:"#ffa733",color:'white'}} variant="contained">
+                {value}
+            </Button>
+            
+        </div>
+        )
+        
+      }
+    
+
 }
 
 export default Tombol
