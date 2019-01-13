@@ -39,7 +39,30 @@ class Tombol extends React.Component{
             <DialogTitle id="alert-dialog-title">{"Information !"}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                Success Creating New Meet UP, See you there !
+                Success Creating New Meet Up, See you there !
+                </DialogContentText>
+            </DialogContent>
+           
+            </Dialog>
+            </div>
+            )
+        }
+        else if(value ==='Join'){
+            return (
+                <div>
+            <Button style={{backgroundColor:"#ffa733",color:'white',textDecoration:'none'}} variant="contained" onClick={this.handleClickOpen}>
+                {value}
+            </Button>
+            <Dialog
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            >
+            <DialogTitle id="alert-dialog-title">{"Information !"}</DialogTitle>
+            <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                Success Join, See you there !
                 </DialogContentText>
             </DialogContent>
            
@@ -60,7 +83,7 @@ class Tombol extends React.Component{
        }
        return (
         <div>
-            <Button style={{backgroundColor:"#ffa733",color:'white'}} variant="contained">
+            <Button style={{backgroundColor:"#ffa733",color:'white',textDecoration:'none'}} variant="contained">
                 {value}
             </Button>
             

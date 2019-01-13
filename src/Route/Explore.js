@@ -42,7 +42,7 @@ class Explore extends Component{
             <Grid item xs={8}> 
                 <Grid item xs={12}>
                     <Grid container>
-                        <Grid item xs={6}>
+                        <Grid item xs={12}>
                             <Title value={valueTitle} valueStyle={styleContainerTop}/>
                         </Grid>
                        
@@ -50,9 +50,10 @@ class Explore extends Component{
                     
                     <Grid container spacing={24}>
                         {
-                        
+                      
                             value.map((data) => {
-                                {i+=1}
+                                  {i+=1}
+                            
                                 return (
                                 <Grid item xs={4} > 
                                     <Paper style={{padding:'10px 10px 10px 10px'}}>
@@ -62,7 +63,7 @@ class Explore extends Component{
                                     </Paper>                          
                                 </Grid>
                             )
-                           
+                            
                         })
                     }
                     </Grid>

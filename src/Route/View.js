@@ -22,17 +22,18 @@ class View extends React.Component{
         if (this.props.match.params.index === '1')
         {
             this.setState({
-                valueTitle : 'Meet Up 27 November  2017'
+                valueTitle : 'Meet Up 27 October 2017'
             })
         }
         else if (this.props.match.params.index === '2'){
             this.setState({
-                valueTitle : 'Meet Up 27 October  2017'
+                valueTitle : 'Meet Up 27 September 2017'
             })
         }
         else if(this.props.match.params.index === '3'){
             this.setState({
-                valueTitle : 'Meet Up 27 September 2017'
+                
+                valueTitle : 'Meet Up 27 November 2017'
             })
         }
     }
@@ -40,7 +41,14 @@ class View extends React.Component{
      
 
     render(){
-
+        let i = 0
+            if(this.props.match.params.index === '3'){
+                i = 0
+            }
+            else
+            {
+                i=this.props.match.params.index 
+            }
         const {valueTitle,styleContainerTop} = this.state
         const {value} = this.props
         return(
@@ -52,7 +60,7 @@ class View extends React.Component{
                     
                     <Grid item xs={8}> 
                       <Title value={valueTitle} valueStyle={styleContainerTop}/>
-                        <Paper style={{padding:'10px 10px 10px 10px'}}  dangerouslySetInnerHTML= {{__html :value[this.props.match.params.index]}}>
+                        <Paper style={{padding:'10px 10px 10px 10px'}}  dangerouslySetInnerHTML= {{__html :value[i]}}>
                         </Paper>
                     </Grid>
 

@@ -17,10 +17,9 @@ class Container_Top extends Component{
             
                 titleValue : 'Hacktiv8 Meet Up',
                 buttonValue : 'Join Us',
-            style : 
-                {
+         
                     styleContainerTop : 'ContainerTop'
-                } 
+              
         }
     }
 
@@ -89,7 +88,7 @@ class Container_Top extends Component{
                                         })
                                     }           
                                     </Typography>
-                                <Link to= '/CreateMeetUp'><Tombol value={buttonValue}/></Link> 
+                                <Link to= '/Join' style={{color:'white',textDecoration:'none'}}><Tombol value={buttonValue} style={{color:'white',textDecoration:'none'}}/></Link> 
 
                             </Grid>
                         </Grid>
