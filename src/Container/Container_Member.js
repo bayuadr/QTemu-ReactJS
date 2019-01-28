@@ -9,6 +9,7 @@ import {fetchUser,seeall,colapse} from '../Redux/action'
 import Collapse from '@material-ui/core/Collapse';
 import {connect} from 'react-redux'
 import { List } from 'react-content-loader';
+import {Redirect} from 'react-router-dom'
 
 class Container_Member extends Component{
     constructor(){
@@ -34,6 +35,10 @@ class Container_Member extends Component{
         checked?   label = <label onClick={colapse}>Collapse</label> : label = <label onClick={seeall}>Sea All</label>
         checked?  Others = '' : Others = 'Others' 
         
+        if(users === 'Not Found'){
+            return <Redirect to ='/NotFound'/>
+        }
+
         if (this.props.loading){
             return (
 

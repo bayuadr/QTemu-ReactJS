@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import {fetchUser} from '../Redux/action'
 import {bindActionCreators} from 'redux'
 import ContentLoader, { Facebook } from 'react-content-loader'
+import {Redirect} from 'react-router-dom'
+
 
 class Container_Next extends Component{
     constructor(props){
@@ -27,7 +29,9 @@ class Container_Next extends Component{
 
         const { valueTitle } = this.state
         const { Members,loading } = this.props
-
+        if(Members === 'Not Found'){
+            return <Redirect to ='/NotFound'/>
+        }
         if (loading){
             return(
                 <Grid container style={{marginBottom:'20px'}}>
@@ -105,7 +109,8 @@ class Container_Next extends Component{
 
 const mapStateToProps = (state) => ({
     Members : state.data,
-    loading : state.loading
+    loading : state.loading,
+    
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

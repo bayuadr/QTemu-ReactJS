@@ -29,7 +29,7 @@ class Containter_Past extends Component{
 
     render() {
         let label = ''
-        let i = -1
+    
         const {checked,seeall_past,colapse_past,value,index} = this.props
         const {valueTitle,valueButton} = this.state
 
@@ -56,14 +56,14 @@ class Containter_Past extends Component{
                     
                     <Grid container spacing={24}>
                         {
-                            value.map((data) => {
-                                {i+=1}
+                            value.map((data,index) => {
+                        
                                 return (
                                 <Grid item xs={4} > 
                                     <Paper style={{padding:'10px 10px 10px 10px'}}>
                                         <Container wrap="nowrap" value={data}/>
                                         <br/>
-                                        <Tombol value={valueButton} valueIndex={index[i]}/>
+                                        <Tombol value={valueButton} valueIndex={index}/>
                                     </Paper>                          
                                 </Grid>
                             )
@@ -74,14 +74,14 @@ class Containter_Past extends Component{
                     <Grid container spacing={24}>
                         {
                             
-                          value.map((data) => {
-                            {i+=1}
+                          value.map((data,index) => {
+                          
                                 return (
                                 <Grid item xs={4} > 
                                     <Paper style={{padding:'10px 10px 10px 10px'}}>
                                         <Container wrap="nowrap" value={data}/>
                                         <br/>
-                                        <Tombol value={valueButton} valueIndex={index[i]}/>
+                                        <Tombol value={valueButton} valueIndex={index}/>
                                     </Paper>                          
                                 </Grid>
                             )
@@ -102,7 +102,6 @@ class Containter_Past extends Component{
 const mapStateToProps = (state) => ({
     checked : state.checked_past,
     value : state.valueContainer.data,
-    index :  state.valueContainer.index
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

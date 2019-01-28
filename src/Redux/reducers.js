@@ -15,8 +15,7 @@ const variable = {
         #38 JakartaJS April Meetup with kumparan`,
         `<b>27 September 2017</b><br/>
         <br/>
-        #37 JakartaJS April Meetup with kumparan`,],
-        index :['1','2','3']
+        #37 JakartaJS April Meetup with kumparan`,]
     }
     
 }
@@ -36,6 +35,12 @@ export const reducers = (state = {...variable},action) =>{
             num : state.num-=1,
         })
         case "reqUsersSucess":
+        return({
+            ...state,
+            data : action.payload,
+            loading : false
+        })
+        case "requesErrortUser":
         return({
             ...state,
             data : action.payload,

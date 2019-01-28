@@ -6,7 +6,6 @@ export const decrementAction = () => ({type:"DECREMENT"})
 
 export const fetchUser = () => {
     return dispatch =>{
-        dispatch(loading())
         axios.get('https://swapi.co/api/people')
         .then(
             res => {
@@ -58,7 +57,4 @@ export const seeall_past = () =>({
 export const colapse_past = () =>({
     type:'handleOnCollapse_past',
 })
-
-
-export const loading = () =>({type:'loading'})
 

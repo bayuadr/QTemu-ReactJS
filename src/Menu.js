@@ -7,6 +7,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import ListMenu from './Atom/ListMenu'
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -74,7 +75,7 @@ function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="fixed" style={{backgroundColor:'#ffa733',marginBottom:'20px'}}>
         <Toolbar>
-            <img style={{width:'75px',height:'75px',marginRight:'100px'}}src = 'https://res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1482132470/vfmmn0twb17nn2epblee.png'/>
+            <Link to ='/'><img style={{width:'75px',height:'75px',marginRight:'100px'}}src = 'https://res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1482132470/vfmmn0twb17nn2epblee.png'/></Link>
             <ListMenu/>
           <div className={classes.grow} />
           <div className={classes.search}>

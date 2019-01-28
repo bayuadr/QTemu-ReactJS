@@ -22,55 +22,10 @@ class Tombol extends React.Component{
         this.setState({ open: false });
       };
       render(){
+          
           const {value,valueIndex} = this.props
-        if (value==='Submit'){
-        
-            return (
-                <div>
-            <Button style={{backgroundColor:"#ffa733",color:'white'}} variant="contained" onClick={this.handleClickOpen}>
-                {value}
-            </Button>
-            <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            >
-            <DialogTitle id="alert-dialog-title">{"Information !"}</DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                Success Creating New Meet Up, See you there !
-                </DialogContentText>
-            </DialogContent>
-           
-            </Dialog>
-            </div>
-            )
-        }
-        else if(value ==='Join'){
-            return (
-                <div>
-            <Button style={{backgroundColor:"#ffa733",color:'white',textDecoration:'none'}} variant="contained" onClick={this.handleClickOpen}>
-                {value}
-            </Button>
-            <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            >
-            <DialogTitle id="alert-dialog-title">{"Information !"}</DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                Success Join, See you there !
-                </DialogContentText>
-            </DialogContent>
-           
-            </Dialog>
-            </div>
-            )
-        }
-       else if(value ==='View'){
+          
+        if(value ==='View'){
         return (
             <div>
              <Link to={`/View/${valueIndex}`} style={{color:'white',textDecoration:'none'}}>
@@ -81,6 +36,29 @@ class Tombol extends React.Component{
             </div>
             )
        }
+       else if(value ==='Join' || value ==='Submit'){
+        return (
+            <div>
+        <Button style={{backgroundColor:"#ffa733",color:'white',textDecoration:'none'}} variant="contained" onClick={this.handleClickOpen}>
+            {value}
+        </Button>
+        <Dialog
+        open={this.state.open}
+        onClose={this.handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        >
+        <DialogTitle id="alert-dialog-title">{"Information !"}</DialogTitle>
+        <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+            {value === 'Join' ? 'Success Join, See you there !' : 'Success Creating New Meet Up, See you there !'}
+            </DialogContentText>
+        </DialogContent>
+       
+        </Dialog>
+        </div>
+        )
+    }
        return (
         <div>
             <Button style={{backgroundColor:"#ffa733",color:'white',textDecoration:'none'}} variant="contained">

@@ -8,6 +8,7 @@
     "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
     "create-react-library": "^2.6.7",
+    "netlify-cli": "^2.6.1",
     "react": "^16.6.3",
     "react-content-loader": "^3.4.1",
     "react-dom": "^16.6.3",
@@ -32,5 +33,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "redux-devtools-extension": "^2.13.7"
+  }
 }

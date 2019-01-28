@@ -9,6 +9,8 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import ContentLoader, { Facebook } from 'react-content-loader'
 import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
+
 
 class Container_Top extends Component{
     constructor(){
@@ -31,7 +33,9 @@ class Container_Top extends Component{
     render() {
         const {users,loading} = this.props
         const {titleValue,buttonValue,styleContainerTop} = this.state
-
+        if(users === 'Not Found'){
+            return <Redirect to ='/NotFound'/>
+        }
         if (loading){
             return(
     <Grid container style={{marginTop:'100px',marginBottom:'20px'}}>
@@ -42,7 +46,7 @@ class Container_Top extends Component{
                 <Grid item xs={12}>
                     <Paper>
                         <Grid container>
-                            <Grid item xs={4} wrap="nowrap">
+                            <Grid item xs={5} wrap="nowrap">
                             <img style={{width:'305px',height:'210px',margin:'10px 10px 10px 10px'}} src='https://cdn.slidesharecdn.com/ss_thumbnails/react-webinar-161101082735-thumbnail-4.jpg?cb=1477988980'/>
                             </Grid>
                             <Grid item xs={7}> 
@@ -73,7 +77,7 @@ class Container_Top extends Component{
                 <Grid item xs={12}>
                     <Paper>
                         <Grid container>
-                            <Grid item xs={4} wrap="nowrap">
+                            <Grid item xs={5} wrap="nowrap">
                             <img style={{width:'305px',height:'210px',margin:'10px 10px 10px 10px'}} src='https://cdn.slidesharecdn.com/ss_thumbnails/react-webinar-161101082735-thumbnail-4.jpg?cb=1477988980'/>
                             </Grid>
                             <Grid item xs={7}> 
